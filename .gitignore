@@ -32,3 +32,4 @@ yarn-debug.log*
 
 // add
 .php-version
+.ruby-version
