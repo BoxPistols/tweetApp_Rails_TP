@@ -12,15 +12,10 @@ module TwitterClone
     config.load_defaults 6.0
 
     config.generators do |g|
-    # 余分なファイルを作らない 
-    g.stylesheets false   #styleシート
-    g.javascripts false   #javascript
-    g.helper false        　#ヘルパー
-    g.test_framework false #テストファイル
-
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+      g.stylesheets false   
+      g.javascripts false
+      g.helper false
+      g.test_framework false
+    end
   end
 end
