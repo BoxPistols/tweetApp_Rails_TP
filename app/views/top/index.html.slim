@@ -1,10 +1,11 @@
 #login
   .container
+
   - if user_signed_in?
     h4
       | メールアドレス： #{current_user.email}
     = link_to "ログアウト", destroy_user_session_path, method: :delete
-  
+
   / - else
   /   /! ユーザーがログインしていなかった時の処理
   /   h2 現在ログインしていません
@@ -18,10 +19,11 @@
         #login-box.col-md-12
           p 現在ログインしていません
           form#login-form.form action="" method="post"
-            h3.text-center.text-info Login
-            .form-group
+            h3.text-center.text-info
               = link_to "ログイン", new_user_session_path, class: 'post'
-              = link_to "新規登録", new_user_registration_path, class: 'post'
+            .form-group
+              / = link_to "ログイン", new_user_session_path, class: 'post'
+              / = link_to "新規登録", new_user_registration_path, class: 'post'
               label.text-info for="username"  Username:
               br/
               input#username.form-control name="username" type="text" /
@@ -29,13 +31,7 @@
               label.text-info for="password"  Password:
               br/
               input#password.form-control name="password" type="text" /
-            .form-group
-              label.text-info for="remember-me"
-                span> Remember me
-                |  
-                span
-                  input#remember-me name="remember-me" type="checkbox" /
-              br/
               input.btn.btn-info.btn-md name="submit" type="submit" value="submit" /
             #register-link.text-right
-              a.text-info href="#"  Register here
+              a.text-info href="#"
+                = link_to "新規登録", new_user_registration_path, class: 'post'
