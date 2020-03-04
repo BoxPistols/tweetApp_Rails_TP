@@ -1,68 +1,41 @@
-.container.pt-4
-  .row
-    h1
-      | Bootstap Sample
-    .card-group
-      .card
-        svg.bd-placeholder-img.card-img-top[width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"]
-          title
-            | Placeholder
-          rect[width="100%" height="100%" fill="#868e96"]
-          text[x="50%" y="50%" fill="#dee2e6" dy=".3em"]
-            | Image cap
-        .card-body
-          h5.card-title
-            | Card title
-          p.card-text
-            | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-          p.card-text
-            small.text-muted
-              | Last updated 3 mins ago
-      .card
-        svg.bd-placeholder-img.card-img-top[width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"]
-          title
-            | Placeholder
-          rect[width="100%" height="100%" fill="#868e96"]
-          text[x="50%" y="50%" fill="#dee2e6" dy=".3em"]
-            | Image cap
-        .card-body
-          h5.card-title
-            | Card title
-          p.card-text
-            | This card has supporting text below as a natural lead-in to additional content.
-          p.card-text
-            small.text-muted
-              | Last updated 3 mins ago
-      .card
-        svg.bd-placeholder-img.card-img-top[width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"]
-          title
-            | Placeholder
-          rect[width="100%" height="100%" fill="#868e96"]
-          text[x="50%" y="50%" fill="#dee2e6" dy=".3em"]
-            | Image cap
-        .card-body
-          h5.card-title
-            | Card title
-          p.card-text
-            | This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
-          p.card-text
-            small.text-muted
-              | Last updated 3 mins ago
-  .mt-4
-    .row
-      button.mr-2.btn.btn-outline-primary[type="button"]
-        | Primary
-      button.mr-2.btn.btn-outline-secondary[type="button"]
-        | Secondary
-      button.mr-2.btn.btn-outline-success[type="button"]
-        | Success
-      button.mr-2.btn.btn-outline-danger[type="button"]
-        | Danger
-      button.mr-2.btn.btn-outline-warning[type="button"]
-        | Warning
-      button.mr-2.btn.btn-outline-info[type="button"]
-        | Info
-      button.mr-2.btn.btn-outline-light[type="button"]
-        | Light
-      button.btn.btn-outline-dark[type="button"]
-        | Dark
+#login
+  .container
+  - if user_signed_in?
+    h4
+      | メールアドレス： #{current_user.email}
+    = link_to "ログアウト", destroy_user_session_path, method: :delete
+  
+  / - else
+  /   /! ユーザーがログインしていなかった時の処理
+  /   h2 現在ログインしていません
+  /   = link_to "ログイン", new_user_session_path, class: 'post'
+  /   /! ログイン画面に移行する
+  /   = link_to "新規登録", new_user_registration_path, class: 'post'
+
+  - else
+    #login-row.row.justify-content-center.align-items-center
+      #login-column.col-md-6
+        #login-box.col-md-12
+          p 現在ログインしていません
+          form#login-form.form action="" method="post"
+            h3.text-center.text-info Login
+            .form-group
+              = link_to "ログイン", new_user_session_path, class: 'post'
+              = link_to "新規登録", new_user_registration_path, class: 'post'
+              label.text-info for="username"  Username:
+              br/
+              input#username.form-control name="username" type="text" /
+            .form-group
+              label.text-info for="password"  Password:
+              br/
+              input#password.form-control name="password" type="text" /
+            .form-group
+              label.text-info for="remember-me"
+                span> Remember me
+                |  
+                span
+                  input#remember-me name="remember-me" type="checkbox" /
+              br/
+              input.btn.btn-info.btn-md name="submit" type="submit" value="submit" /
+            #register-link.text-right
+              a.text-info href="#"  Register here
