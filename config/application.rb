@@ -12,10 +12,11 @@ module TwitterClone
     config.load_defaults 6.0
 
     config.generators do |g|
-      g.stylesheets false   
+      g.stylesheets false
       g.javascripts false
       g.helper false
       g.test_framework false
+      g.check_default_type false
     end
   end
 end
